@@ -19,7 +19,7 @@ ubuntugis-docker
 ## Get/Build it
 
 ```
-docker pull javimarlop/ubuntugis-docker
+docker pull doctorluz/ubuntugis-docker
 
 # or clone the repository, open a terminal into it and build it:
 
@@ -31,7 +31,7 @@ sudo docker build --tag="ubuntugis-docker" .
 ```
 # previously create a new user
 
-docker run -ti -p 27:22 -p 8888:8888 javimarlop/ubuntugis-docker /bin/bash
+docker run -ti -p 27:22 -p 8888:8888 doctorluz/ubuntugis-docker /bin/bash
 useradd -m user
 echo -e "changeme\nchangeme\n" | passwd user
 usermod -a -G fuse user

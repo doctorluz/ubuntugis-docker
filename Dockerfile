@@ -38,19 +38,15 @@ RUN apt-get install -y default-jre-headless default-jre
 
 # GRASS GIS 7 and R
 
-#RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
-
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9 
-
-#RUN gpg --keyserver keyserver.ubuntu.com --recv-key E084DAB9
-#RUN gpg -a --export E084DAB9 | sudo apt-key add -
 
 RUN apt-get install -y --force-yes flex firefox openssh-server bison libtiff4-dev mesa-common-dev libglu-dev  libfftw3-* libcairo2-dev python-gtk2 python-gtk2-dbg python-gtk2-dev python-wxgtk* grass70-* r-base r-base-dev r-cran-xml libapparmor1 gdebi-core xserver-xorg xdm xterm gedit-plugins
 
 # Configuring xdm to allow connections from any IP address and ssh to allow X11 Forwarding.
 RUN sed -i 's/DisplayManager.requestPort/!DisplayManager.requestPort/g' /etc/X11/xdm/xdm-config
 RUN sed -i '/#any host/c\*' /etc/X11/xdm/Xaccess
-#RUN ln -s /usr/bin/Xorg /usr/bin/X # not working
+#RUN ln -s /usr/bin/Xorg /usr/bin/X 
+# not working
 
 RUN echo "local({r <- getOption('repos');r['CRAN'] <- 'http://cran.rstudio.com/';options(repos = r)})" > /etc/R/Rprofile.site
 
@@ -70,18 +66,15 @@ RUN apt-get update && apt-get install -y -q \
     nodejs \
     nodejs-legacy
 
-# ipython notebook
-
 RUN apt-get update
 RUN apt-get upgrade -y
 
 RUN apt-get install -y software-properties-common 
-RUN add-apt-repository -y ppa:opencpu/opencpu-1.5
-# add-apt-repository -y ppa:opencpu/opencpu-dev 
-RUN apt-get update 
-RUN apt-get install -y opencpu vnc4server vncviewer pgadmin3 postgis
+RUN apt-get install -y vnc4server vncviewer pgadmin3 postgis
 
-#RUN apt-get install --reinstall ca-certificates
+RUN add-apt-repository -y ppa:opencpu/opencpu-1.5
+RUN apt-get update
+RUN apt-get install -y opencpu
 
 RUN pip install rpy2
 
@@ -96,12 +89,6 @@ COPY ./ssh_config /etc/ssh/ssh_config
 RUN Rscript -e "install.packages('XML', type = 'source');install.packages(c('devtools','png','rgdal','raster','yaml','base64enc'));devtools::install_github('ramnathv/rCharts@dev');devtools::install_github('ramnathv/rMaps');devtools::install_github('javimarlop/ocpu-radarplot-sochi')"
 
 #RUN echo X11Forwarding yes >> /etc/ssh/ssh_config # not working
-
-RUN useradd -M javier
-#RUN echo -e "ugis\nugis\n" | passwd javier
-RUN echo 'javier:docker.io' | chpasswd
-RUN usermod -s /bin/bash javier
-RUN adduser javier sudo
 
 EXPOSE 22
 EXPOSE 8888
