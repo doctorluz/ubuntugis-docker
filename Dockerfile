@@ -25,7 +25,7 @@ RUN apt-get upgrade -y
 
 #RUN dpkg-divert --local --rename --add /sbin/initctl && ln -sf /bin/true /sbin/initctl
 
-RUN apt-get install -y --force-yes build-essential
+#RUN apt-get install -y --force-yes build-essential
 RUN apt-get install -y --force-yes language-pack-en* 
 RUN apt-get install -y --force-yes curl
 RUN apt-get install -y --force-yes iputils-ping
