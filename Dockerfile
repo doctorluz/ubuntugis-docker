@@ -33,6 +33,12 @@ RUN pip install scikit-learn #--upgrade
 #RUN pip install scipy --upgrade
 #RUN pip install gdal --upgrade
 
+# Lucy testing
+#RUN sudo apt-get install libxml2-dev libxslt1-dev
+#pip install lxml --upgrade
+#RUN pip install scrapy
+# end Lucy testing
+
 # Java
 RUN apt-get install -y default-jre-headless default-jre 
 
@@ -74,6 +80,7 @@ RUN apt-get install -y vnc4server vncviewer pgadmin3 postgis
 
 RUN add-apt-repository -y ppa:opencpu/opencpu-1.5
 RUN apt-get update
+RUN apt-get upgrade -y
 RUN apt-get install -y opencpu
 
 RUN pip install rpy2
@@ -89,6 +96,11 @@ COPY ./ssh_config /etc/ssh/ssh_config
 RUN Rscript -e "install.packages('XML', type = 'source');install.packages(c('devtools','png','rgdal','raster','yaml','base64enc'));devtools::install_github('ramnathv/rCharts@dev');devtools::install_github('ramnathv/rMaps');devtools::install_github('javimarlop/ocpu-radarplot-sochi')"
 
 #RUN echo X11Forwarding yes >> /etc/ssh/ssh_config # not working
+
+-RUN useradd -M lucy
+-RUN echo 'lucy:docker.io' | chpasswd
+-RUN usermod -s /bin/bash lucy
+-RUN adduser lucy sudo
 
 EXPOSE 22
 EXPOSE 8888
