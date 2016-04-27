@@ -25,43 +25,44 @@ RUN apt-get upgrade -y
 
 #RUN dpkg-divert --local --rename --add /sbin/initctl && ln -sf /bin/true /sbin/initctl
 
-RUN apt-get install -y --force-yes build-essential language-pack-en* 
-RUN apt-get install -y --force-yes build-essential curl
-RUN apt-get install -y --force-yes build-essential iputils-ping
-RUN apt-get install -y --force-yes build-essential fuse
-RUN apt-get install -y --force-yes build-essential libfuse-dev libfuse2
-RUN apt-get install -y --force-yes build-essential git
-RUN apt-get install -y --force-yes build-essential mc
-RUN apt-get install -y --force-yes build-essential sshfs
-RUN apt-get install -y --force-yes build-essential python-setuptools
-RUN apt-get install -y --force-yes build-essential python-dev
-RUN apt-get install -y --force-yes build-essential libpython-dev
-RUN apt-get install -y --force-yes build-essential python-pip
-RUN apt-get install -y --force-yes build-essential software-properties-common
-RUN apt-get install -y --force-yes build-essential python-numpy
-RUN apt-get install -y --force-yes build-essential libgdal-dev
-RUN apt-get install -y --force-yes build-essential python-gdal
-RUN apt-get install -y --force-yes build-essential gdal-bin
-RUN apt-get install -y --force-yes build-essential libproj0
-RUN apt-get install -y --force-yes build-essential libproj-dev
-RUN apt-get install -y --force-yes build-essential python-pyproj
-RUN apt-get install -y --force-yes build-essential libgeos-*
-RUN apt-get install -y --force-yes build-essential nano
-RUN apt-get install -y --force-yes build-essential wget
-RUN apt-get install -y --force-yes build-essential dialog
-RUN apt-get install -y --force-yes build-essential libgdal1-dev
-RUN apt-get install -y --force-yes build-essential libgdal1h 
-RUN apt-get install -y --force-yes build-essential grass-core 
-RUN apt-get install -y --force-yes build-essential python-matplotlib 
-RUN apt-get install -y --force-yes build-essential python-pandas 
-RUN apt-get install -y --force-yes build-essential python-sympy 
-RUN apt-get install -y --force-yes build-essential python-scipy 
-RUN apt-get install -y --force-yes build-essential python-nose 
-RUN apt-get install -y --force-yes build-essential libblas-dev 
-RUN apt-get install -y --force-yes build-essential liblapack-dev 
-RUN apt-get install -y --force-yes build-essential gfortran 
-RUN apt-get install -y --force-yes build-essential ipython 
-RUN apt-get install -y --force-yes build-essential ipython-notebook
+RUN apt-get install -y --force-yes build-essential
+RUN apt-get install -y --force-yes language-pack-en* 
+RUN apt-get install -y --force-yes curl
+RUN apt-get install -y --force-yes iputils-ping
+RUN apt-get install -y --force-yes fuse
+RUN apt-get install -y --force-yes libfuse-dev libfuse2
+RUN apt-get install -y --force-yes git
+RUN apt-get install -y --force-yes mc
+RUN apt-get install -y --force-yes sshfs
+RUN apt-get install -y --force-yes python-setuptools
+RUN apt-get install -y --force-yes python-dev
+RUN apt-get install -y --force-yes libpython-dev
+RUN apt-get install -y --force-yes python-pip
+RUN apt-get install -y --force-yes software-properties-common
+RUN apt-get install -y --force-yes python-numpy
+RUN apt-get install -y --force-yes libgdal-dev
+RUN apt-get install -y --force-yes python-gdal
+RUN apt-get install -y --force-yes gdal-bin
+RUN apt-get install -y --force-yes libproj0
+RUN apt-get install -y --force-yes libproj-dev
+RUN apt-get install -y --force-yes python-pyproj
+RUN apt-get install -y --force-yes libgeos-*
+RUN apt-get install -y --force-yes nano
+RUN apt-get install -y --force-yes wget
+RUN apt-get install -y --force-yes dialog
+RUN apt-get install -y --force-yes libgdal1-dev
+RUN apt-get install -y --force-yes libgdal1h 
+RUN apt-get install -y --force-yes grass-core 
+RUN apt-get install -y --force-yes python-matplotlib 
+RUN apt-get install -y --force-yes python-pandas 
+RUN apt-get install -y --force-yes python-sympy 
+RUN apt-get install -y --force-yes python-scipy 
+RUN apt-get install -y --force-yes python-nose 
+RUN apt-get install -y --force-yes libblas-dev 
+RUN apt-get install -y --force-yes liblapack-dev 
+RUN apt-get install -y --force-yes gfortran 
+RUN apt-get install -y --force-yes ipython 
+RUN apt-get install -y --force-yes ipython-notebook
 
 #RUN pip install ipython ipython-notebook --upgrade
 RUN pip install scikit-learn #--upgrade
